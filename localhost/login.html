@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Вход</title>
+    <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- Fluent Design Bootstrap -->
+  <link rel="stylesheet" href="./css/fluent.css">
+    <!-- Micon icons-->
+  <link rel="stylesheet" href="./css/micon.min.css">
+ 
+    <!--Custom style -->
+  <style>
+    body {
+      background: url('img/login_bg.png') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+    }
+    /* Delete it if you don't want to have black/white colors and forced font-weight */
+    .form-control::-webkit-input-placeholder { color: #a9a9a9; }  /* WebKit, Blink, Edge */
+    .form-control:-moz-placeholder { color: #a9a9a9; }  /* Mozilla Firefox 4 to 18 */
+    .form-control::-moz-placeholder { color: #a9a9a9; }  /* Mozilla Firefox 19+ */
+    .form-control:-ms-input-placeholder { color: #a9a9a9; }  /* Internet Explorer 10-11 */
+    .form-control::-ms-input-placeholder { color: #a9a9a9; }  /* Microsoft Edge */
+
+    .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Start your project here-->
+<div class="background">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col "></div>
+      <div class="col text-center">
+      <img src="img/logo.png" class="img-fluid">
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="text-center text-justify mb-4" style="color: #a9a9a9; font-weight: bold">
+      <small>ООО «Производственное Объединение Онима-Сталь»</small>
+    </div>
+    <form name="input" method="POST">
+      <div class="row mt-4 mb-4">
+        <div class="col"></div>
+        <div class="col">
+          <input required pattern="[A-Za-z0-9_-]{6,16}" class="form-control" id="username" name="Login" type="text" placeholder="Логин" style="background-color: rgba(255,255,255,.15);">
+          </div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-4 mb-4">
+        <div class="col"></div>
+        <div class="col">
+          <input required pattern="[A-Za-z0-9_-]{6,16}" tytle="Формат" class="form-control" id="password" name="Pass" type="password" placeholder="Пароль" style="background-color: rgba(255,255,255,.15);">
+          </div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-4 mb-4">
+        <div class="col"></div>
+        <div class="col">
+          <button class="btn btn-secondary btn-block ml-0 mr-0" type="submit" value=" " name="submit">Вход</button>
+          </div>
+        <div class="col"></div>
+      </div>
+    </form>
+	<div class="row mt-5" >
+		<div class="col"></div> 
+		<div class="col">
+			<div class="alert alert-danger" id="auth_fail role="alert" style= "display: none; opacity: 0.85;">
+				<b>Вход не удался</b>
+				<small><BR>Введен неверный логин или пароль</small>
+			</div>
+		</div>
+		<div class="col"></div>			
+  </div>
+</div>
+</div>
+
+	<!-- Scripts -->
+	<!-- JQuery -->
+	<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  	<!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+</body>
+
+</html>

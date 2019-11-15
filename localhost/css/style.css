@@ -1,0 +1,30 @@
+/* Delete it if you don't want to have black/white colors and forced font-weight */
+.form-control::-webkit-input-placeholder { color: #a9a9a9; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder { color: #a9a9a9; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder { color: #a9a9a9; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder { color: #a9a9a9; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder { color: #a9a9a9; }  /* Microsoft Edge */
+
+.background {
+position: fixed;
+top: 0;
+left: 0;
+min-width: 100%;
+min-height: 100%;
+top: 0;
+left: 0;
+display: flex;
+align-items: center;
+align-content: center;
+justify-content: center;
+overflow: auto;
+-webkit-backdrop-filter: blur(20px) saturate(125%);
+backdrop-filter: blur(20px) saturate(125%);
+background-color: rgba(0,0,0,.3);
+}
+
+@supports not ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))){
+.background {
+  background-color: rgba(0,0,0,.7);
+}
+}

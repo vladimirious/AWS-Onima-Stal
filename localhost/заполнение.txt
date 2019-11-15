@@ -1,0 +1,454 @@
+﻿Авторизационные данные
+
+1.	Администратор:
+	Логин: admin1
+	Пароль: admin1
+	Двойной хеш пароля: 8b283e8957f744ae5a1a6add05fc354f
+
+2.	Генеральный директор:
+	Логин: gen_dir
+	Пароль: gen_dir
+	Двойной хеш пароля: 975fb5261439322d9739033f832417e2
+
+3.	Отдел расчетов:
+	Логин: otdel_rasch
+	Пароль: otdel_rasch
+	Двойной хеш пароля:	94e2a8c7f10afdd6e4f680214b34815a
+
+4.	Бухгалитерия:
+	Логин: buhgal
+	Пароль: buhgal
+	Двойной хеш пароля:	2be82ef3a4b472e6e205da0a597bad0f
+	
+5.	Исполнительный директор:
+	Логин: isp_dir
+	Пароль: isp_dir
+	Двойной хеш пароля:	4baf868afc8a5386eb9a635b5a357237
+	
+6.	Отдел закупок:
+	Логин: otdel_zakupok
+	Пароль: otdel_zakupok
+	Двойной хеш пароля:	2c2e038e98530c7641d5ec286a4f4142
+	
+7.	Конструктор-технолог:
+	Логин: konstr_tech
+	Пароль: konstr_tech
+	Двойной хеш пароля:	dc1e41ff2fb110e3ce3b1b81a227d79c
+	
+8.	Начальник склада:
+	Логин: nach_sklada
+	Пароль: nach_sklada
+	Двойной хеш пароля:	d67dc98ce34c2c9081414a6288a26ebf
+
+9.	Начачальник производства:
+	Логин: nach_proizv
+	Пароль: nach_proizv
+	Двойной хеш пароля:	be31f639c2a599e6b32fd635acc36798
+	
+
+ЗАПОЛНЕНИЕ
+
+
+1.	АДМИНИСТРАТОР
+
+	1.	Dir_of_dep:
+		Dep_id: 1
+		Dep_name: Администраторы
+		Cont_inf: admin@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 1
+		Pos_code: 20080
+		Pos_name: Администратор системный 
+		Comments: MYSQL, Apache, php
+
+	3.	Manning_table:
+		M_t_id: 1
+		Numb_of_b: 1
+		Salary: 35000.00
+		Comments: Срочный договор
+		Pos_id: 1 (ВК)
+
+	4.	Employees:
+		TAB_N: 1
+		Surname: Тихонов
+		NAME: Алексей
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Витальевич
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2016.01.01
+		B_date: 1972.01.01
+		E_mail: tihonov@mail.ru
+		M_t_id: 1 (ВК)
+		Dep_id: 1 (ВК)
+		
+	5.	Users:
+		User_id: 1
+		Login: admin1
+		Pass: 8b283e8957f744ae5a1a6add05fc354f
+		Interface: admin
+		TAB_N: 1 (ВК)
+		User_hash: "не заполняется"
+
+
+2.	ГЕНЕРАЛЬНЫЙ ДИРЕКТОР
+
+	1.	Dir_of_dep:
+		Dep_id: 2
+		Dep_name: Генеральная дирекция
+		Cont_inf: gen@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 2
+		Pos_code: 20541
+		Pos_name: Генеральный директор
+		Comments: 
+
+	3.	Manning_table:
+		M_t_id: 2
+		Numb_of_b: 1
+		Salary: 150000.00
+		Comments: Учредитель
+		Pos_id: 2 (ВК)
+
+	4.	Employees:
+		TAB_N: 2
+		Surname: Белогуров
+		NAME: Андрей
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Викторович
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2006.01.01
+		B_date: 1972.01.01
+		E_mail: belogurov@mail.ru
+		M_t_id: 2 (ВК)
+		Dep_id: 2 (ВК)
+		
+	5.	Users:
+		User_id: 2
+		Login: gen_dir
+		Pass: 975fb5261439322d9739033f832417e2
+		Interface: gen_dir
+		TAB_N: 2 (ВК)
+		User_hash: "не заполняется"
+	
+	
+3.	ОТДЕЛ РАСЧЕТОВ
+
+	1.	Dir_of_dep:
+		Dep_id: 3
+		Dep_name: Отдел расчетов
+		Cont_inf: or@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 3
+		Pos_code: 27745
+		Pos_name: Экономист по планированию
+		Comments: 
+
+	3.	Manning_table:
+		M_t_id: 3
+		Numb_of_b: 1
+		Salary: 45000.00
+		Comments: Расчеты
+		Pos_id: 3 (ВК)
+
+	4.	Employees:
+		TAB_N: 3
+		Surname: Коршунов
+		NAME: Дмитрий
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Анатольевич
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2006.01.01
+		B_date: 1972.01.01
+		E_mail: korshunov@mail.ru
+		M_t_id: 3 (ВК)
+		Dep_id: 3 (ВК)
+		
+	5.	Users:
+		User_id: 3
+		Login: otdel_rasch
+		Pass: 394e2a8c7f10afdd6e4f680214b34815a
+		Interface: otdel_rasch
+		TAB_N: 3 (ВК)
+		User_hash: "не заполняется"
+
+
+4.	БУХГАЛТЕРИЯ
+
+	1.	Dir_of_dep:
+		Dep_id: 4
+		Dep_name: Бухгалтерия
+		Cont_inf: buh@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 4
+		Pos_code: 20656
+		Pos_name: Главный бухгалтер
+		Comments: Бухгалтер
+
+	3.	Manning_table:
+		M_t_id: 4
+		Numb_of_b: 1
+		Salary: 100000.00
+		Comments: Заместитель ген. директора
+		Pos_id: 4 (ВК)
+
+	4.	Employees:
+		TAB_N: 2
+		Surname: Сахно
+		NAME: Алла
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Владимировна
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2006.01.01
+		B_date: 1969.01.01
+		E_mail: sahno@mail.ru
+		M_t_id: 4 (ВК)
+		Dep_id: 4 (ВК)
+		
+	5.	Users:
+		User_id: 4
+		Login: buhgal
+		Pass: 42be82ef3a4b472e6e205da0a597bad0f
+		Interface: buhgal
+		TAB_N: 4 (ВК)
+		User_hash: "не заполняется"
+
+
+5.	ИСПОЛНИТЕЛЬНЫЙ ДИРЕКТОР
+
+	1.	Dir_of_dep:
+		Dep_id: 5
+		Dep_name: Дирекция
+		Cont_inf: isp@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 5
+		Pos_code: 21486
+		Pos_name: Исполнительный директор
+		Comments: 
+
+	3.	Manning_table:
+		M_t_id: 5
+		Numb_of_b: 1
+		Salary: 110000.00
+		Comments: Исполнительный директор
+		Pos_id: 5 (ВК)
+
+	4.	Employees:
+		TAB_N: 5
+		Surname: Зимовьев
+		NAME: Виктор
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Николаевич
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2006.01.01
+		B_date: 1966.01.01
+		E_mail: zimovev@mail.ru
+		M_t_id: 5 (ВК)
+		Dep_id: 5 (ВК)
+		
+	5.	Users:
+		User_id: 5
+		Login: isp_dir
+		Pass: 54baf868afc8a5386eb9a635b5a357237
+		Interface: isp_dir
+		TAB_N: 5 (ВК)
+		User_hash: "не заполняется"
+
+
+6.	ОТДЕЛ ЗАКУПОК
+
+	1.	Dir_of_dep:
+		Dep_id: 6
+		Dep_name: Отдел закупок
+		Cont_inf: oz@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 6
+		Pos_code: 24057
+		Pos_name: Менеджер по закупкам
+		Comments: 
+
+	3.	Manning_table:
+		M_t_id: 6
+		Numb_of_b: 1
+		Salary: 50000.00
+		Comments: Срочный договор
+		Pos_id: 6 (ВК)
+
+	4.	Employees:
+		TAB_N: 6
+		Surname: Смирнов
+		NAME: Виктор
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Семенович
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2010.01.01
+		B_date: 1982.01.01
+		E_mail: smirnov@mail.ru
+		M_t_id: 6 (ВК)
+		Dep_id: 6 (ВК)
+		
+	5.	Users:
+		User_id: 6
+		Login: otdel_zakupok
+		Pass: 62c2e038e98530c7641d5ec286a4f4142
+		Interface: otdel_zakupok
+		TAB_N: 6 (ВК)
+		User_hash: "не заполняется"
+
+
+7.	КОНСТРУКТОР-ТЕХНОЛОГ
+
+	1.	Dir_of_dep:
+		Dep_id: 7
+		Dep_name: Конструкторcко-технологический отдел
+		Cont_inf: kt@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 7
+		Pos_code: 21009
+		Pos_name: Конструктор-технолог
+		Comments: 
+
+	3.	Manning_table:
+		M_t_id: 7
+		Numb_of_b: 1
+		Salary: 85000.00
+		Comments: Конструктор-технолог
+		Pos_id: 7 (ВК)
+
+	4.	Employees:
+		TAB_N: 7
+		Surname: Титов
+		NAME: Ярослав
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Владиславович
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2006.01.01
+		B_date: 1961.01.01
+		E_mail: titov@mail.ru
+		M_t_id: 7 (ВК)
+		Dep_id: 7 (ВК)
+		
+	5.	Users:
+		User_id: 7
+		Login: konstr_tech
+		Pass: 7dc1e41ff2fb110e3ce3b1b81a227d79c
+		Interface: konstr_tech
+		TAB_N: 7 (ВК)
+		User_hash: "не заполняется"
+
+
+8.	НАЧАЛЬНИК СКЛАДА
+
+	1.	Dir_of_dep:
+		Dep_id: 8
+		Dep_name: Склад
+		Cont_inf: sklad@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 8
+		Pos_code: 24912
+		Pos_name: Начальник склада
+		Comments: 
+
+	3.	Manning_table:
+		M_t_id: 8
+		Numb_of_b: 1
+		Salary: 70000.00
+		Comments: 
+		Pos_id: 8 (ВК)
+
+	4.	Employees:
+		TAB_N: 8
+		Surname: Урманов
+		NAME: Сергей
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Константинович
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2006.01.01
+		B_date: 1967.01.01
+		E_mail: urmanov@mail.ru
+		M_t_id: 8 (ВК)
+		Dep_id: 8 (ВК)
+		
+	5.	Users:
+		User_id: 8
+		Login: nach_sklada
+		Pass: 8d67dc98ce34c2c9081414a6288a26ebf
+		Interface: nach_sklada
+		TAB_N: 8 (ВК)
+		User_hash: "не заполняется"
+
+
+9.	НАЧАЛЬНИК ПРОИЗВОДСТВА
+
+	1.	Dir_of_dep:
+		Dep_id: 9
+		Dep_name: Производство
+		Cont_inf: pr@onimastal.ru
+
+	2.	Dir_of_positions:
+		Pos_id: 9
+		Pos_code: 24841
+		Pos_name: Начальник производства
+		Comments: 
+
+	3.	Manning_table:
+		M_t_id: 9
+		Numb_of_b: 1
+		Salary: 90000.00
+		Comments: Нач. производства
+		Pos_id: 9 (ВК)
+
+	4.	Employees:
+		TAB_N: 9
+		Surname: Тимашев
+		NAME: Виталий
+		Pass_s_n: 1230
+		Pass_n: 123456
+		Pass_inf: ТП № ОТДЕЛА УФМС РОССИИ РАЙОНА ПО ГОРОДУ
+		Sec_name: Сергеевич
+		Pass_date: 1990.01.01
+		Tel_numb: +7(012)3456789
+		Emp_date: 2006.01.01
+		B_date: 1972.01.01
+		E_mail: timashev@mail.ru
+		M_t_id: 9 (ВК) 
+		Dep_id: 9 (ВК)
+		
+	5.	Users:
+		User_id: 9
+		Login: nach_proizv
+		Pass: 9be31f639c2a599e6b32fd635acc36798
+		Interface: nach_proizv
+		TAB_N: 9 (ВК)
+		User_hash: "не заполняется"

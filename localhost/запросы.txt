@@ -1,0 +1,258 @@
+Запросы:
+
+		Заказчики
+		
+			Получение всей информации по конкретному заказчику.
+			$QUERY ='select * FROM customers WHERE Cust_id='.$_GET["n"];
+
+			Изменение информации о заказчике.
+			$QUERY = 'UPDATE customers SET Cust_name="'.$_POST['cust_name'].'", Cust_tel="'.$_POST['tel_num'].'", Cont_cust_name="'.$_POST['cont_name'].'", E_mail="'.$_POST['mail'].'", Kpp='.$_POST['kpp'].', OGRN='.$_POST['ogrn'].', Check_acc='.$_POST['balance'].', ITN='.$_POST['inn'].', Cust_address="'.$_POST['address'].'", Comments="'.$_POST['comment'].'" WHERE Cust_id='.$row[0];
+			
+			Добавление информации о новом заказчике.
+			$QUERY = 'INSERT INTO customers (Cust_id, Cust_name, Cust_tel, Cont_cust_name, E_mail, Kpp, OGRN, Check_acc, ITN, Cust_address, Comments) VALUES(default, "'.form_control($_POST['cust_name']).'", "'.$_POST['tel_num'].'", "'.$_POST['cont_name'].'", "'.$_POST['mail'].'", '.$_POST['kpp'].', '.$_POST['ogrn'].', '.$_POST['balance'].', '.$_POST['inn'].', "'.form_control($_POST['address']).'", "'.$_POST['comment'].'")';
+		
+		Техническая документация
+		
+			Получение информвации по технической документации проекта.
+			$QUERY = "SELECT Link, Comments, Type_doc FROM tech_doc WHERE Proj_id=".$_GET["n"];
+			
+			Добавление нового документа технической документации.
+			$QUERY = "INSERT INTO tech_doc (Type_doc, Comments, Proj_id, Link) VALUES ('".$_POST['doc_type']."', '".$_POST['comment']."', ".$_GET["n"].", 0)";
+			
+			Изменение ифнормации о техническом документе.
+			$QUERY = "UPDATE tech_doc SET Link='".$uploadfile."', Comments='".$_POST['comment']."', Type_doc='".$_POST['doc_type']."' WHERE Tech_doc_id=".$_GET["doc"];
+			
+		Этапы проекта
+			
+			Добавление проекта в таблицу этапов проекта
+			$QUERY = "INSERT INTO project_stages (Proj_id) SELECT MAX(Proj_id) from projects";
+			
+			Установка текущей даты фактического завершения этапа закупок 
+			$QUERY = "UPDATE project_stages SET F_date_ZM='".date("Y-m-d")."' WHERE Proj_id=".$_GET["n"];
+			
+			Установка стутуса завершения этапа закупок на "Отклонен"
+			$QUERY = "UPDATE project_stages SET Stat_1=0 WHERE Proj_id=".$_GET["n"];
+			
+			Установка текущей даты фактического завершения этапа КТП
+			$QUERY = "UPDATE project_stages SET F_date_KTR='".date("Y-m-d")."' WHERE Proj_id=".$_GET["n"];
+			
+			Установка стутуса завершения этапа КТП на "Отклонен"
+			$QUERY = "UPDATE project_stages SET Stat_2=0 WHERE Proj_id=".$_GET["n"];
+		
+			Установка текущей даты фактического завершения этапа производства 
+			$QUERY = "UPDATE project_stages SET F_date_PR='".date("Y-m-d")."' WHERE Proj_id=".$_GET["n"];
+			
+			Установка стутуса завершения этапа производства на "Отклонен"
+			$QUERY = "UPDATE project_stages SET Stat_3=0 WHERE Proj_id=".$_GET["n"];
+			
+			Установка текущей даты фактического завершения этапа отгрузки. 
+			$QUERY = "UPDATE project_stages SET F_date_OZ='".date("Y-m-d")."' WHERE Proj_id=".$_GET["n"];
+			
+			Установка стутуса завершения этапа отгрузки на "Отклонен"
+			$QUERY = "UPDATE project_stages SET Stat_4=0 WHERE Proj_id=".$_GET["n"];
+			
+			Получение информации о датах этапов исполнения проекта.
+			$QUERY ="SELECT F_date_SM, P_date_SM, F_date_ZM, P_date_ZM, F_date_KTR, P_date_KTR, F_date_PR, P_date_PR, F_date_OZ, P_date_OZ FROM project_stages WHERE Proj_id =".$_GET["n"];
+		
+			Получение статусов завершенности этапов исполнения проекта от исполнителей.
+			$QUERY ="SELECT Stat_1, Stat_2, Stat_3, Stat_4 FROM project_stages WHERE Proj_id =".$_GET["n"];
+		
+		Проект
+		
+			Получение статусов завершенности и выполненности проекта.
+			$QUERY ="SELECT Stat_2, Stat_1 FROM projects WHERE Proj_id =".$_GET["n"];
+			
+			Добавление нового проекта
+			$QUERY ='INSERT INTO projects (Proj_id, Cust_id, Work_id, Comments, Start_date) VALUES (default,"'.$_POST['cust_id'].'", "'.$work_id.'", "'.$_POST['comment'].'", "'.date("Y-m-d").'")';
+		
+		Авторизация
+		
+			Получение id-пользователя, хешированного пароля, идентификатора интерфейса, где, с проверкой на существование, логин равен переданному логину.
+			$QUERY = mysqli_query($link,"SELECT User_id, Pass, Interface FROM users WHERE login='".mysqli_real_escape_string($link,$_POST['Login'])."' LIMIT 1");
+			
+			Обновление генерируемого идентификатора конкретного пользователя для сессий в таблице пользователей.
+			mysqli_query($link, "UPDATE users SET user_hash='".$hash."' WHERE User_id='".$data['User_id']."'");
+		
+		Договор
+			
+			Получение информации по договору.
+			$QUERY = "SELECT Contr_N, DATE, Link, Comments, Stat_1, Stat_2, Stat_3 FROM contracts WHERE Proj_id=".$_GET["n"];
+		
+			Обновление информации о договоре.
+			$QUERY = "UPDATE contracts SET Contr_N=".$_POST['contract_num'].", Comments='".$_POST['comment']."', Link='".$uploadfile."', Stat_2=".$_POST['signed'].", DATE='".date("Y-m-d")."' WHERE Proj_id=".$_GET["n"];
+			
+			Добавление договора по проекту.
+			$QUERY = "INSERT INTO contracts (Contract_id ,Contr_N, Comments, Proj_id ,Cust_id , Link) VALUES (default, ".$_POST['contract_num'].", '".$_POST['comment']."', ".$_GET["n"].", ".$cust_id[0].", '".$uploadfile."')";
+		
+		План
+		
+			Получение информации по плану проекта.
+			$QUERY = "SELECT Pr_doc_date, Comments, Link, Pr_doc_id FROM pr_contract_docs WHERE TYPE='plan' AND Proj_id=".$_GET["n"];
+			
+			Установка даты согласования плана проекта.
+			$QUERY = "UPDATE pr_contract_docs SET Pr_doc_date='".date("Y-m-d")."' WHERE Pr_doc_id=".$plan[3];
+		
+		Типы работ
+		
+			Добавление нового типа работ.
+			$QUERY = 'INSERT INTO dir_of_works (Work_id, Work_name) VALUES (default, "'.$_POST['new_type_of_work'].'")';
+			
+			Получения типов работ.
+			$QUERY ="SELECT
+				Work_id,
+				Work_name
+			FROM
+				dir_of_works";
+		
+		Пользователи
+		
+			Получение развернутой информации о пользователе как о сотруднике
+			$QUERY ="SELECT
+				Employees.Name,
+				Employees.Sec_name,
+				Employees.Surname,
+				Employees.TAB_N,
+				Dir_Of_positions.Pos_name,
+				Dir_of_dep.Dep_name,
+				Users.Login, 
+				Users.User_id
+			FROM
+				Employees
+			LEFT JOIN Users ON Employees.TAB_N = Users.TAB_N
+			LEFT JOIN Dir_of_dep ON Employees.Dep_id = Dir_of_dep.Dep_id
+			LEFT JOIN Manning_table ON Employees.M_t_id = Manning_table.M_t_id
+			LEFT JOIN Dir_of_positions ON Manning_table.Pos_id = Dir_of_positions.Pos_id;";
+			
+			Изменение данных пользователя
+			$QUERY ='UPDATE users SET TAB_N = '.$selectTab_n.', Login = "'.$login.'", Pass = "'.$pass.'" WHERE User_id = '.$User_id;
+		
+		Сотрудники
+		
+			Добавление информации о новом сотруднике.
+			$QUERY="INSERT INTO employees(
+				Surname,
+				NAME,
+				Sec_name,
+				B_date,
+				Pass_s_n,
+				Pass_n,
+				Pass_inf,
+				Addr,
+				Tel_numb,
+				E_mail,
+				Emp_date,
+				Dep_id,
+				M_t_id
+			)
+			VALUES(
+				'".$_POST['Surname']."',
+				'".$_POST['NAME']."',
+				'".$_POST['Sec_name']."',
+				'".$_POST['B_date']."',
+				".$_POST['Pass_s_n'].",
+				".$_POST['Pass_n'].",
+				'".$_POST['Pass_inf']."',
+				'".$_POST['Addr']."',
+				'".$_POST['Tel_numb']."',
+				'".$_POST['E_mail']."',
+				'".$_POST['Emp_date']."',
+				".$_POST['Dep_id'].",
+				".$_POST['M_t_id'].")";
+		
+			Получение информации о сотруднике, включая его личные данные, должность и структорное подразделение.
+			$QUERY ="SELECT
+				employees.TAB_N,
+				employees.Surname,
+				employees.NAME,
+				employees.Sec_name,
+				dir_of_positions.Pos_name,
+				dir_of_dep.Dep_name
+			FROM
+				dir_of_dep
+			LEFT JOIN employees ON dir_of_dep.Dep_id = employees.Dep_id
+			LEFT JOIN manning_table ON employees.M_t_id = manning_table.M_t_id
+			LEFT JOIN dir_of_positions ON manning_table.Pos_id = dir_of_positions.Pos_id";
+			
+			Получение информации о должности.
+			$QUERY="SELECT
+				manning_table.M_t_id,
+				dir_of_positions.Pos_name
+			FROM
+				manning_table
+			LEFT JOIN dir_of_positions ON manning_table.Pos_id = dir_of_positions.Pos_id";
+			
+			Получение информации о занятости должностей в соответствии со штатным расписанием.
+			$QUERY="SELECT manning_table.M_t_id, T.num, manning_table.Numb_of_b FROM (SELECT M_t_id, COUNT(TAB_N) as num FROM employees WHERE Dism_date IS NULL GROUP BY M_t_id) as T RIGHT JOIN manning_table ON T.M_t_id=manning_table.M_t_id";
+	
+		Проекты
+		
+			Получение списка незавершенных проектов с информации о заказчике и типе работ.
+			$QUERY ="SELECT
+				projects.Proj_id,
+				customers.Cust_name,
+				dir_of_works.Work_name,
+				projects.Start_date,
+				customers.Cust_id
+			FROM
+				projects
+			LEFT JOIN dir_of_works ON projects.Work_id = Dir_of_works.Work_id
+			LEFT JOIN customers ON projects.Cust_id = customers.Cust_id
+			WHERE
+				Stat_1='0'";
+				
+			Получение списка завершенных проектов с информации о заказчике и типе работ.
+			$QUERY ="SELECT
+				projects.Proj_id,
+				customers.Cust_name,
+				dir_of_works.Work_name,
+				projects.Start_date,
+				projects.End_date,
+				customers.Cust_id
+			FROM
+				projects
+			LEFT JOIN dir_of_works ON projects.Work_id = Dir_of_works.Work_id
+			LEFT JOIN customers ON projects.Cust_id = customers.Cust_id
+			WHERE
+				Stat_1 <> '0';";
+		
+		Оценка эффективности работы подразделений
+		
+			КОЛЛИЧЕСТВО ПРОСРОЧЕК ОТДЕЛА РАСЧЕТОВ
+			$QUERY ="SELECT COUNT(projects.Proj_id) FROM projects LEFT JOIN project_stages ON projects.Proj_id=project_stages.Proj_id WHERE project_stages.Stat_1<>0 AND project_stages.P_date_SM < project_stages.F_date_SM";
+			
+			КОЛЛИЧЕСТВО ПРОСРОЧЕК БУХГАЛТЕРИИ
+			$QUERY ="SELECT COUNT(projects.Proj_id) FROM projects LEFT JOIN project_stages ON projects.Proj_id=project_stages.Proj_id WHERE project_stages.Stat_1<>0 AND project_stages.P_date_SM < project_stages.F_date_SM";
+			
+			КОЛЛИЧЕСТВО ПРОСРОЧЕК ОТДЕЛА ЗАКУПОК
+			$QUERY ="SELECT COUNT(projects.Proj_id) FROM projects LEFT JOIN project_stages ON projects.Proj_id=project_stages.Proj_id WHERE project_stages.Stat_1<>0 AND project_stages.P_date_ZM < project_stages.F_date_ZM";
+			
+			КОЛЛИЧЕСТВО ПРОСРОЧЕК КОНСТРУКТОР-ТЕХНОЛОГА
+			$QUERY ="SELECT COUNT(projects.Proj_id) FROM projects LEFT JOIN project_stages ON projects.Proj_id=project_stages.Proj_id WHERE project_stages.Stat_1<>0 AND project_stages.P_date_KTR < project_stages.F_date_KTR";
+			
+			КОЛЛИЧЕСТВО ПРОСРОЧЕК ПРОИЗВОДСТВА
+			$QUERY ="SELECT COUNT(projects.Proj_id) FROM projects LEFT JOIN project_stages ON projects.Proj_id=project_stages.Proj_id WHERE project_stages.Stat_1<>0 AND project_stages.P_date_PR < project_stages.F_date_PR";
+			
+			КОЛЛИЧЕСТВО ПРОСРОЧЕК СКЛАДА
+			$QUERY ="SELECT COUNT(projects.Proj_id) FROM projects LEFT JOIN project_stages ON projects.Proj_id=project_stages.Proj_id WHERE project_stages.Stat_1<>0 AND project_stages.P_date_OZ < project_stages.F_date_OZ";
+		
+		Оборудование
+		
+			Получение информации об обрудовании.
+			$QUERY ="SELECT
+				Equip_name,
+				Serial_N,
+				Location,
+				Cost,
+				Tem_of_exp,
+				Dat_st_exp
+			FROM
+				equipment;";
+			
+			Получения списка незавершенных проектов, где используется конкретное оборудование.
+			$QUERY = "SELECT projects.Proj_id FROM equipment LEFT JOIN equip_for_proj ON equipment.Equip_id=equip_for_proj.Equip_id LEFT JOIN projects ON equip_for_proj.Proj_id=projects.Proj_id WHERE equipment.Equip_id='".$_GET['n']."' AND projects.Stat_1=0";
+		
+		Статистика
+			
+			Получение числа выбранного типа работ во всех заказах.
+			$QUERY = "SELECT dir_of_works.Work_name, COUNT(projects.Work_id) FROM projects LEFT JOIN dir_of_works ON projects.Work_id=dir_of_works.Work_id WHERE dir_of_works.Work_id='".$_POST['work_id']."' GROUP BY dir_of_works.Work_name";
+		

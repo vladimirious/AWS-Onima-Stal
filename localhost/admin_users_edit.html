@@ -1,0 +1,363 @@
+<?php 
+session_start();
+if (!isset($_SESSION['hash'])) 
+{
+	header("Location: login");
+	exit;
+}
+
+if (isset($_POST['logout']))
+{
+	unset($_SESSION['User_id']);
+	unset($_SESSION['hash']);
+	unset($_SESSION['Interface']);
+    session_destroy();
+    header("Location: login");
+    exit;
+}	
+
+//include 'admin_main.html';
+
+?>
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>User's edit</title>
+    <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- Fluent Design Bootstrap -->
+  <link rel="stylesheet" href="./css/fluent.css">
+    <!-- Micon icons-->
+  <link rel="stylesheet" href="./css/micon.min.css">
+    <!--Custom style -->
+  <style>
+    body {
+      background: url('img/bg.png') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+      overflow:auto;
+}
+
+    }
+    /* Delete it if you don't want to have black/white colors and forced font-weight */
+    .form-control::-webkit-input-placeholder { color: #a9a9a9; }  /* WebKit, Blink, Edge */
+    .form-control:-moz-placeholder { color: #a9a9a9; }  /* Mozilla Firefox 4 to 18 */
+    .form-control::-moz-placeholder { color: #a9a9a9; }  /* Mozilla Firefox 19+ */
+    .form-control:-ms-input-placeholder { color: #a9a9a9; }  /* Internet Explorer 10-11 */
+    .form-control::-ms-input-placeholder { color: #a9a9a9; }  /* Microsoft Edge */
+
+    .side-bar {
+      -webkit-backdrop-filter: blur(20px) saturate(125%);
+      backdrop-filter: blur(20px) saturate(125%);
+      background-color: rgba(0,0,0,.3);
+    }
+    .main-w {
+      -webkit-backdrop-filter: blur(20px) saturate(125%);
+      backdrop-filter: blur(20px) saturate(125%);
+      background-color: rgba(255,255,255,.4);
+    }
+    @supports not ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))){
+      .side-bar {
+        background-color: rgba(0,0,0,.7);
+      }
+      .main-w {
+        background-color: rgba(255,255,255,.8);
+      }
+    }
+    .nopadding {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .my-custom-scrollbar {
+      position: relative;
+      height: 500px;
+      overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+      display: block;
+    }
+  </style>
+
+</head>
+
+<body>
+<!-- Start your project here-->
+<div style="height: 100%; width: 100%; left: 0; top: 0; position: fixed; display: flex; align-items: center; align-content: center; justify-content: center;">
+<!--  <div class="main-w" style="width: 1200px; height:735px;">Max-height 100%</div>-->
+  <div class="container" container>
+    <div class="row justify-content-md-center" style="width:1080px;">
+      <div class="col-fluid" >
+        <div class="side-bar" style="width: 100px; height:661px;">
+          <div class="row-fluid">
+            <div class="col text-center nopadding">
+              <img src="img/space_sb.png" class="img">
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="col text-center nopadding">
+              <img src="img/users_sb.png" class="img">
+            </div>
+          </div>
+          <div class="row-fluid">
+            <div class="col text-center nopadding">
+              <a href="auth.html"><img src="img/users_edit_sb_a.png" class="img"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-fluid">
+        <div class="main-w" style="width: 980px; height:661px;">
+          <div class="row-fluid">
+
+            <div class="col text-right nopadding" >
+              <a href="auth.html"><img src="img/exit-b.png" class="img"></a>
+            </div>
+          </div>
+          <div class="row-fluid ml-3">
+            <div class="col">
+              <p class="sh1">Изменение учетных данных пользователей</p>
+            </div>
+          </div>
+            <div class="row-fluid ml-3 mr-3">
+            <div class="col">
+              <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar pr-3">
+                  <table class="table table-hover table-striped table-sm" style="overflow: auto">
+                    <thead>
+                       <tr>
+                         <th scope="col">Таб. №</th>
+                         <th scope="col">ФИО</th>
+                         <th scope="col">Должность</th>
+                         <th scope="col">Подразделение</th>
+                         <th scope="col">Логин</th>
+                         <th scope="col">Пароль</th>
+                         <th scope="col">Комментарий</th>
+                         <th scope="col">Ред.</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                       <tr>
+                         <td>ННН</td><td>Вася Андреевич Пупкин</td>
+                         <td>Генеральный директор</td>
+                         <td>Руководство</td>
+                         <td>vasia</td>
+                         <td>12345</td>
+                         <td>Забывает пароли</td><td><a href="">Ред.</a></td>
+                       </tr>
+                     </tbody>
+                   </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+	<!-- Scripts -->
+	<!-- JQuery -->
+  <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  	<!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+</body>
+
+</html>
